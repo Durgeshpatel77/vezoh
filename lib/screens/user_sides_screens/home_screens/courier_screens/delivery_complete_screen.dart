@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:vezoh/screens/user_sides_screens/home_screens/courier_screens/rate_your_couriertrip_screen.dart';
 import 'package:vezoh/screens/user_sides_screens/home_screens/rides_screens/rate_your_trip_screen.dart';
-import 'package:vezoh/theme/app_theme.dart';
+import 'package:vezoh/theme/app_theme.dart'; // Update to your actual AppColors import
 
-class TripCompleteScreen extends StatelessWidget {
-  const TripCompleteScreen({super.key});
+class DeliveryCompleteScreen extends StatefulWidget {
+  const DeliveryCompleteScreen({super.key});
 
   @override
+  State<DeliveryCompleteScreen> createState() => _DeliveryCompleteScreenState();
+}
+
+class _DeliveryCompleteScreenState extends State<DeliveryCompleteScreen> {
+  @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text("Trip complete", style: TextStyle(color: AppColors.white, fontSize: 18)),
+        title: const Text("Delivery complete", style: TextStyle(color: AppColors.white, fontSize: 18)),
         centerTitle: true,
         backgroundColor: AppColors.skyBlue,
         scrolledUnderElevation: 0,
@@ -35,13 +41,13 @@ class TripCompleteScreen extends StatelessWidget {
               child: Column(
                 children:  [
                   CircleAvatar(
-                    radius: 33,
+                      radius: 33,
                       backgroundColor: Colors.green.shade100,
                       child: Icon(Icons.check, color: Colors.green, size: 30)),
                   SizedBox(height: 12),
-                  Text("Trip completed!", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Text("Package delivered!", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                   SizedBox(height: 4),
-                  Text("Hope you enjoyed your ride", style: TextStyle(fontSize: 14, color: AppColors.gray)),
+                  Text("your package was delivered safely ", style: TextStyle(fontSize: 14, color: AppColors.gray)),
                 ],
               ),
             ),
@@ -60,17 +66,17 @@ class TripCompleteScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("Trip summary", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                  const Text("Delivery summary", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                   const SizedBox(height: 12),
                   _tripDetailRow("Distance", "8.5 km"),
                   _tripDetailRow("Duration", "28 min"),
-                  _tripDetailRow("Driver", "Rajesh Kumar"),
+                  _tripDetailRow("Driver", "Vikram Bike"),
                   const Divider(height: 24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
                       Text("Total fare", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
-                      Text("₹145", style: TextStyle(color: AppColors.skyBlue, fontWeight: FontWeight.bold,fontSize: 18)),
+                      Text("₹85", style: TextStyle(color: AppColors.skyBlue, fontWeight: FontWeight.bold,fontSize: 18)),
                     ],
                   ),
                 ],
@@ -109,7 +115,8 @@ class TripCompleteScreen extends StatelessWidget {
               height: 55,
               child: ElevatedButton(
                 onPressed: () {
-                  Get.to(() => const RateTripScreen());
+                  Get.to(() => const RateYourCouriertripScreen());
+
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.skyBlue,

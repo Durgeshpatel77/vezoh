@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:vezoh/theme/app_theme.dart';
-
-class RateTripScreen extends StatefulWidget {
-  const RateTripScreen({super.key});
+class RateYourCouriertripScreen extends StatefulWidget {
+  const RateYourCouriertripScreen({super.key});
 
   @override
-  State<RateTripScreen> createState() => _RateTripScreenState();
+  State<RateYourCouriertripScreen> createState() => _RateYourCouriertripScreenState();
 }
 
-class _RateTripScreenState extends State<RateTripScreen> {
+class _RateYourCouriertripScreenState extends State<RateYourCouriertripScreen> {
   int selectedRating = 0;
   final Set<String> selectedTags = {};
 
@@ -56,11 +55,11 @@ class _RateTripScreenState extends State<RateTripScreen> {
                 children: const [
                   CircleAvatar(
                     radius: 28,
-                    child: Text("RK", style: TextStyle(fontSize: 18, color: AppColors.white)),
+                    child: Text("VB", style: TextStyle(fontSize: 18, color: AppColors.white)),
                     backgroundColor: AppColors.skyBlue,
                   ),
                   SizedBox(height: 8),
-                  Text("Rajesh Kumar", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                  Text("Vikram Bike", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                   SizedBox(height: 8),
                   Text("How was your trip?", style: TextStyle(color: AppColors.gray)),
                 ],
@@ -142,7 +141,7 @@ class _RateTripScreenState extends State<RateTripScreen> {
               ),
             ),
 
-SizedBox(height: 50,),
+            SizedBox(height: 50,),
 
             // 🔘 Submit / Skip
             SizedBox(

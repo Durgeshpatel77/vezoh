@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vezoh/controller/home_controller/home_page_controller.dart';
+import 'package:vezoh/screens/user_sides_screens/home_screens/courier_screens/finddriver_courier_screen.dart';
 import 'package:vezoh/screens/user_sides_screens/home_screens/rides_screens/profile_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
@@ -177,7 +178,31 @@ Widget findDriverButton(HomeController controller) {
         borderRadius: BorderRadius.circular(8),
       ),
       child: ElevatedButton(
-        onPressed: isEnabled ? () {} : null,
+        onPressed: isEnabled
+            ? () {
+          final index = controller.selectedIndex.value;
+
+          if (index == 0) {
+            // Ride
+            final from = controller.rideFromController.text.trim();
+            final to = controller.rideToController.text.trim();
+            Get.to(() => AvailableDriversScreen(fromLocation: from, toLocation: to));
+          } else if (index == 1) {
+            // Courier
+            final from = controller.courierFromController.text.trim();
+            final to = controller.courierToController.text.trim();
+            final desc = controller.courierDescController.text.trim();
+
+            Get.to(() => FindDriverForCourierScreen(
+              fromLocation: from,
+              toLocation: to,
+              description: desc,
+            ));
+          } else if (index == 2) {
+            // Freight (optional: handle later if needed)
+          }
+        }
+            : null,
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 16),
           backgroundColor: Colors.transparent,

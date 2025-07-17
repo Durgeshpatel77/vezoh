@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:vezoh/screens/login_screens/chooze_service_screen.dart';
+import 'package:vezoh/screens/user_sides_screens/login_screens/chooze_service_screen.dart';
 
 void main() {
   runApp(const MyApp());

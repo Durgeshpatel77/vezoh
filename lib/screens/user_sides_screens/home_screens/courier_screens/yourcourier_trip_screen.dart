@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:vezoh/screens/user_sides_screens/home_screens/rides_screens/trip_complate_screen.dart';
+import 'package:vezoh/screens/user_sides_screens/home_screens/courier_screens/delivery_complete_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
-class YourTripScreen extends StatelessWidget {
-  final String driverName;
-  final String fromLocation;
-  final String toLocation;
+class YourcourierTripScreen extends StatefulWidget {
+  const YourcourierTripScreen({super.key});
 
-  const YourTripScreen({
-    super.key,
-    required this.driverName,
-    required this.fromLocation,
-    required this.toLocation,
-  });
+  @override
+  State<YourcourierTripScreen> createState() => _YourcourierTripScreenState();
+}
 
+class _YourcourierTripScreenState extends State<YourcourierTripScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +22,7 @@ class YourTripScreen extends StatelessWidget {
         backgroundColor: AppColors.skyBlue,
         elevation: 0,
         title: Text(
-          "Your trip",
+          "Your delivery",
           style: TextStyle(color: AppColors.white, fontSize: 18),
         ),
       ),
@@ -54,7 +50,8 @@ class YourTripScreen extends StatelessWidget {
             // Driver Status Section
             InkWell(
               onTap: () {
-                Get.to(() => const TripCompleteScreen());
+                Get.to(() => DeliveryCompleteScreen());
+
               },
               child: Container(
                 width: double.infinity,
@@ -68,7 +65,7 @@ class YourTripScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Driver is coming",
+                      "Driver coming for pickup",
                       style: TextStyle(fontSize: 16, color: AppColors.black),
                     ),
                     const SizedBox(height: 4),
@@ -109,7 +106,7 @@ class YourTripScreen extends StatelessWidget {
                     radius: 25,
                     backgroundColor: Colors.blue.shade100,
                     child: const Text(
-                      "RK",
+                      "VB",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
@@ -122,16 +119,16 @@ class YourTripScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
                         Text(
-                          "Rajesh Kumar",
+                          "Vikram Bike",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         SizedBox(height: 4),
                         Text(
-                          "⭐ 4.9   •   Auto",
+                          "⭐ 4.8   • Bike",
                           style: TextStyle(fontSize: 12, color: Colors.grey),
                         ),
                         SizedBox(height: 2),
-                        Text("KA-01-AB-1234", style: TextStyle(fontSize: 13)),
+                        Text("KA-04-GH-3456", style: TextStyle(fontSize: 13)),
                       ],
                     ),
                   ),
@@ -197,10 +194,45 @@ class YourTripScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: AppColors.gray, width: 0.2),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Package information",style: TextStyle(color: AppColors.black,fontSize: 16),),
+                  const SizedBox(height: 8),
+                  Container(
+                    height: 40,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: AppColors.graybg.withOpacity(0.4),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(width: 10),
+                        Text("📦"),
+                        SizedBox(width: 10),
+                        Expanded(child: Text("Laddus")),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
 
             // Cancel Trip Button
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+
+              },
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: Colors.red),
                 minimumSize: const Size(double.infinity, 48),
@@ -209,7 +241,7 @@ class YourTripScreen extends StatelessWidget {
                 ),
               ),
               child: const Text(
-                "Cancel trip",
+                "Cancel delivery",
                 style: TextStyle(color: Colors.red),
               ),
             ),
@@ -256,5 +288,4 @@ class YourTripScreen extends StatelessWidget {
       ],
     );
   }
-
 }
