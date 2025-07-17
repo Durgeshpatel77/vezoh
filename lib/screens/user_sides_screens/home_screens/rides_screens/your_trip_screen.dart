@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:vezoh/screens/home_screens/rides_screens/trip_complate_screen.dart';
+import 'package:vezoh/screens/user_sides_screens/home_screens/rides_screens/trip_complate_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
 class YourTripScreen extends StatelessWidget {

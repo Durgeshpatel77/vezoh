@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vezoh/controller/home_controller/home_page_controller.dart';
+import 'package:vezoh/screens/user_sides_screens/home_screens/rides_screens/profile_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
 // Import screen
-import 'package:vezoh/screens/home_screens/profile_screen.dart';
-
-import '../../../widgets/card_wrapper.dart';
-import '../../../widgets/from_to_fields.dart';
+import 'package:vezoh/widgets/card_wrapper.dart';
+import 'package:vezoh/widgets/from_to_fields.dart';
 import 'available_drivers_screen.dart';
 
 class HomePage extends StatelessWidget {

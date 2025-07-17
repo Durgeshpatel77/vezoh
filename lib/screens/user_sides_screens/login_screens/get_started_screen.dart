@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vezoh/controller/login_controller/getstarted_controller.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
-import '../../controller/login_controller/getstarted_controller.dart';
 import '../home_screens/rides_screens/home_page.dart';
 
 class GetStartedScreen extends StatefulWidget {

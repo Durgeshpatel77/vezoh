@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vezoh/screens/home_screens/rides_screens/your_trip_screen.dart';
+import 'package:vezoh/screens/user_sides_screens/home_screens/rides_screens/your_trip_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
 // Dummy next page

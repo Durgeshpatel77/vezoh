@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/app_theme.dart';
+import 'package:vezoh/theme/app_theme.dart';
 
 class RateTripScreen extends StatefulWidget {
   const RateTripScreen({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vezoh/screens/home_screens/rides_screens/rate_your_trip_screen.dart';
+import 'package:vezoh/screens/user_sides_screens/home_screens/rides_screens/rate_your_trip_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
 class TripCompleteScreen extends StatelessWidget {
