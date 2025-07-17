@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vezoh/controller/home_controller/home_page_controller.dart';
+import 'package:vezoh/controller/user_side_controllers/home_controller/home_page_controller.dart';
 import 'package:vezoh/screens/user_sides_screens/home_screens/courier_screens/finddriver_courier_screen.dart';
 import 'package:vezoh/screens/user_sides_screens/home_screens/freight_screens/finddriver_freight_screen.dart';
 import 'package:vezoh/screens/user_sides_screens/home_screens/rides_screens/profile_screen.dart';

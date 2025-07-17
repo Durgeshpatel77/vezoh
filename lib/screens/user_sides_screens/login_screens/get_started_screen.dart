@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vezoh/controller/login_controller/getstarted_controller.dart';
+import 'package:vezoh/controller/user_side_controllers/login_controller/getstarted_controller.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
 import '../home_screens/home_page.dart';
