@@ -19,86 +19,88 @@ class _ChoozeServiceScreenState extends State<ChoozeServiceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Header
-          Container(
-            color: AppColors.skyBlue,
-            padding: const EdgeInsets.symmetric(vertical: 24), // reduced from 40
-            child: const Column(
-              children: [
-                SizedBox(height: 20,),
-                Text(
-                  'Vezoh',
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Header
+            Container(
+              color: AppColors.skyBlue,
+              padding: const EdgeInsets.symmetric(vertical: 24), // reduced from 40
+              child: const Column(
+                children: [
+                  SizedBox(height: 20,),
+                  Text(
+                    'Vezoh',
+                    style: TextStyle(
+                      color: AppColors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      height: 1.2, // tighter line height
+                    ),
+                  ),
+                  SizedBox(height: 10), // reduced from 5
+                  Text(
+                    'Your trusted transport & delivery partner',
+                    style: TextStyle(
+                      color: AppColors.white,
+                      fontSize: 13, // optional: slightly smaller
+                      height: 1.2, // tighter line height
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        
+            const SizedBox(height: 30),
+        
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Center(
+                child: Text(
+                  'Choose your service',
                   style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 24,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    height: 1.2, // tighter line height
                   ),
                 ),
-                SizedBox(height: 10), // reduced from 5
-                Text(
-                  'Your trusted transport & delivery partner',
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 13, // optional: slightly smaller
-                    height: 1.2, // tighter line height
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-
-          const SizedBox(height: 30),
-
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: Center(
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
               child: Text(
-                'Choose your service',
+                'Book rides, send packages, or transport goods',
                 style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  color: Colors.black54,
                 ),
               ),
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
-            child: Text(
-              'Book rides, send packages, or transport goods',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.black54,
-              ),
+        
+            const SizedBox(height: 20),
+        
+            // Book rides & deliveries option
+            _buildServiceOption(
+              icon: Icons.location_on,
+              title: 'Book rides & deliveries',
+              subtitle: 'Travel anywhere or send packages with ease',
+              onTap: () {
+                Get.to(() => const GetStartedScreen());
+              },
             ),
-          ),
-
-          const SizedBox(height: 20),
-
-          // Book rides & deliveries option
-          _buildServiceOption(
-            icon: Icons.location_on,
-            title: 'Book rides & deliveries',
-            subtitle: 'Travel anywhere or send packages with ease',
-            onTap: () {
-              Get.to(() => const GetStartedScreen());
-            },
-          ),
-
-          // Drive and earn option
-          _buildServiceOption(
-            icon: Icons.bar_chart,
-            title: 'Drive and earn',
-            subtitle: 'Make money driving with your vehicle',
-            onTap: () {
-              Get.to(() => const SignupDriverScreen());
-
-            },
-          ),
-        ],
+        
+            // Drive and earn option
+            _buildServiceOption(
+              icon: Icons.bar_chart,
+              title: 'Drive and earn',
+              subtitle: 'Make money driving with your vehicle',
+              onTap: () {
+                Get.to(() => const SignupDriverScreen());
+        
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vezoh/controller/driver_sides_controllers/signup_driver_controller.dart';
-import 'package:vezoh/screens/user_sides_screens/home_screens/home_page.dart';
+import 'package:vezoh/screens/driver_sides_screens/login_scrrens/welcome_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
 class SignupDriverScreen extends StatefulWidget {
@@ -20,7 +20,7 @@ class _SignupDriverScreenState extends State<SignupDriverScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.skyBlue,
         title: const Text(
-          'Get started',
+          'Sign up to drive',
           style: TextStyle(color: AppColors.white, fontSize: 20),
         ),
         leading: IconButton(
@@ -39,14 +39,14 @@ class _SignupDriverScreenState extends State<SignupDriverScreen> {
             const SizedBox(height: 10),
             const Center(
               child: Text(
-                'Enter your phone number',
+                'Start earning with Vezoh',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 10),
             const Center(
               child: Text(
-                "We'll send a verification code",
+                "Enter your phone number to get started",
                 style: TextStyle(fontSize: 14, color: Colors.black54),
               ),
             ),
@@ -102,7 +102,32 @@ class _SignupDriverScreenState extends State<SignupDriverScreen> {
               ),
             ),
             const SizedBox(height: 20),
-
+            Row(
+              children: <Widget>[
+                const Expanded(
+                  child: Divider(
+                    thickness: 1,
+                    color: AppColors.gray,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    "OR",
+                    style: TextStyle(
+                      color: AppColors.gray,
+                    ),
+                  ),
+                ),
+                 Expanded(
+                  child: Divider(
+                    thickness: 1,
+                    color: AppColors.gray,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
             const Text('Verification Code', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 10),
             Container(
@@ -144,7 +169,7 @@ class _SignupDriverScreenState extends State<SignupDriverScreen> {
                   borderRadius: BorderRadius.circular(10),
                   onTap: isEnabled
                       ? () {
-                    Get.to(() => HomePage());
+                    Get.to(() => WelcomeScreen());
                   }
                       : null,
                   child: const Padding(
