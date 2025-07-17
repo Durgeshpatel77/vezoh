@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vezoh/controller/home_controller/home_page_controller.dart';
 import 'package:vezoh/screens/user_sides_screens/home_screens/courier_screens/finddriver_courier_screen.dart';
+import 'package:vezoh/screens/user_sides_screens/home_screens/freight_screens/finddriver_freight_screen.dart';
 import 'package:vezoh/screens/user_sides_screens/home_screens/rides_screens/profile_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
@@ -198,8 +199,19 @@ Widget findDriverButton(HomeController controller) {
               toLocation: to,
               description: desc,
             ));
-          } else if (index == 2) {
-            // Freight (optional: handle later if needed)
+          }
+          else if (index == 2) {
+            final from = controller.freightFromController.text.trim();
+            final to = controller.freightToController.text.trim();
+            final details = controller.freightDescController.text.trim();
+            final vehicleSize = controller.selectedVehicleSize.value;
+
+            Get.to(() => FinddriverFreightScreen(
+              fromLocation: from,
+              toLocation: to,
+              freightDetails: details,
+              vehicleSize: vehicleSize,
+            ));
           }
         }
             : null,

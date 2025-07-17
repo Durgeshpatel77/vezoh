@@ -25,11 +25,11 @@ class HomeController extends GetxController {
   final selectedVehicleSize = ''.obs;
 
   final List<String> vehicleSizes = [
-    'Mini (500kg)',
-    'Small (1 Ton)',
-    'Medium (2 Ton)',
-    'Large (5 Ton)',
-    'Extra Large (10 Ton)',
+    'Mini vehicle',
+    'Small vehicle',
+    'Medium vehicle',
+    'Large vehicle',
+    'Extra Large vehicle',
   ];
 
   @override
@@ -37,7 +37,7 @@ class HomeController extends GetxController {
     super.onInit();
 
     // Default vehicle size selection
-    selectedVehicleSize.value = 'Mini (500kg)';
+    selectedVehicleSize.value = 'Mini vehicle';
 
     // Ride listeners
     rideFromController.addListener(_updateRideButtonState);
