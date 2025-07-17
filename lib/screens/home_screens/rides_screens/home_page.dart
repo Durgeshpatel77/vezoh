@@ -6,8 +6,8 @@ import 'package:vezoh/theme/app_theme.dart';
 // Import screen
 import 'package:vezoh/screens/home_screens/profile_screen.dart';
 
-import '../../widgets/card_wrapper.dart';
-import '../../widgets/from_to_fields.dart';
+import '../../../widgets/card_wrapper.dart';
+import '../../../widgets/from_to_fields.dart';
 import 'available_drivers_screen.dart';
 
 class HomePage extends StatelessWidget {
@@ -242,19 +242,21 @@ class RideBottomCard extends StatelessWidget {
         Obx(() => ElevatedButton(
           onPressed: controller.isRideButtonEnabled.value
               ? () {
-            // Navigate to AvailableDriversScreen
-            Get.to(() => const AvailableDriversScreen());
+            final from = controller.rideFromController.text.trim();
+            final to = controller.rideToController.text.trim();
+            Get.to(() => AvailableDriversScreen(
+              fromLocation: from,
+              toLocation: to,
+            ));
           }
               : null,
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 14),
-            backgroundColor: AppColors.skyBlue, // Always red background
+            backgroundColor: AppColors.skyBlue,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            // Disable splash effect when button is disabled
-            foregroundColor: controller.isRideButtonEnabled.value ? null : Colors.white.withOpacity(0.6),
-            disabledBackgroundColor: AppColors.skylite, // keep red even when disabled
+            disabledBackgroundColor: AppColors.skylite,
           ),
           child: const Center(
             child: Text(

@@ -1,0 +1,167 @@
+import 'package:flutter/material.dart';
+import 'package:vezoh/screens/home_screens/rides_screens/rate_your_trip_screen.dart';
+import 'package:vezoh/theme/app_theme.dart';
+
+class TripCompleteScreen extends StatelessWidget {
+  const TripCompleteScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.white,
+      appBar: AppBar(
+        title: const Text("Trip complete", style: TextStyle(color: AppColors.white, fontSize: 18)),
+        centerTitle: true,
+        backgroundColor: AppColors.skyBlue,
+        scrolledUnderElevation: 0,
+        automaticallyImplyLeading: false,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // ✅ Trip Completed Info
+            Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.gray,width: 0.3),
+
+              ),
+              child: Column(
+                children:  [
+                  CircleAvatar(
+                    radius: 33,
+                      backgroundColor: Colors.green.shade100,
+                      child: Icon(Icons.check, color: Colors.green, size: 30)),
+                  SizedBox(height: 12),
+                  Text("Trip completed!", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  SizedBox(height: 4),
+                  Text("Hope you enjoyed your ride", style: TextStyle(fontSize: 14, color: AppColors.gray)),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            // 📋 Trip Summary (Static)
+            Container(
+              padding: const EdgeInsets.all(16),
+
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.gray,width: 0.3),
+
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Trip summary", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                  const SizedBox(height: 12),
+                  _tripDetailRow("Distance", "8.5 km"),
+                  _tripDetailRow("Duration", "28 min"),
+                  _tripDetailRow("Driver", "Rajesh Kumar"),
+                  const Divider(height: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text("Total fare", style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text("₹145", style: TextStyle(color: AppColors.skyBlue, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            // 💳 Payment Methods (Styled like screenshot)
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                border: Border.all(color: AppColors.gray,width: 0.3),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child:
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Payment",style: TextStyle(color: AppColors.black,fontSize: 22),),
+                  SizedBox(height: 30,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      PaymentOption(emoji: "💵", label: "Cash"),
+                      PaymentOption(emoji: "📱", label: "UPI"),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+
+            // 🔘 Confirm Payment Button
+            Container(
+              height: 55,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const RateTripScreen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.skyBlue,
+                  minimumSize: const Size(double.infinity, 48),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                ),
+                child:  Text("Confirm payment",style: TextStyle(color: AppColors.white,fontSize: 16),),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget _tripDetailRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(label, style: const TextStyle(color: Colors.grey)),
+          Text(value, style: const TextStyle(fontWeight: FontWeight.w500)),
+        ],
+      ),
+    );
+  }
+}
+
+// 🔳 Payment Option UI Like Screenshot
+class PaymentOption extends StatelessWidget {
+  final String emoji;
+  final String label;
+
+  const PaymentOption({super.key, required this.emoji, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 150,
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.gray,width: 0.3),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        children: [
+          Text(emoji, style: const TextStyle(fontSize: 28)),
+          const SizedBox(height: 8),
+          Text(label, style: const TextStyle(fontSize: 14)),
+        ],
+      ),
+    );
+  }
+}

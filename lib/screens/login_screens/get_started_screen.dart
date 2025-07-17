@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
 import '../../controller/login_controller/getstarted_controller.dart';
-import '../home_screens/home_page.dart';
+import '../home_screens/rides_screens/home_page.dart';
 
 class GetStartedScreen extends StatefulWidget {
   const GetStartedScreen({super.key});
@@ -129,6 +129,8 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                 controller: codeController,
                 focusNode: codeFocusNode,
                 keyboardType: TextInputType.number,
+                maxLength: 6, // ✅ Limit to 6 digits
+                buildCounter: (context, {required currentLength, required isFocused, maxLength}) => null, // ✅ Hides "0/6"
                 onChanged: (value) {
                   controller.code.value = value;
                 },
