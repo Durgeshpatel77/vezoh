@@ -7,7 +7,7 @@ import 'package:vezoh/theme/app_theme.dart';
 // Import screen
 import 'package:vezoh/widgets/card_wrapper.dart';
 import 'package:vezoh/widgets/from_to_fields.dart';
-import 'available_drivers_screen.dart';
+import 'rides_screens/available_drivers_screen.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
