@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vezoh/screens/user_sides_screens/home_screens/courier_screens/rate_your_couriertrip_screen.dart';
-import 'package:vezoh/screens/user_sides_screens/home_screens/rides_screens/rate_your_trip_screen.dart';
 import 'package:vezoh/theme/app_theme.dart'; // Update to your actual AppColors import
 
 class DeliveryCompleteScreen extends StatefulWidget {

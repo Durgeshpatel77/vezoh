@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vezoh/controller/user_side_controllers/login_controller/getstarted_controller.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
 import '../home_screens/home_page.dart';
@@ -15,10 +14,10 @@ class GetStartedScreen extends StatefulWidget {
 class _GetStartedScreenState extends State<GetStartedScreen> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController codeController = TextEditingController();
-  final GetStartedController controller = Get.put(GetStartedController());
-
   final ScrollController scrollController = ScrollController();
   final FocusNode codeFocusNode = FocusNode();
+
+  String verificationCode = "";
 
   @override
   void dispose() {
@@ -28,6 +27,8 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
     codeFocusNode.dispose();
     super.dispose();
   }
+
+  bool get isCodeValid => verificationCode.length == 6 && RegExp(r'^\d{6}$').hasMatch(verificationCode);
 
   @override
   Widget build(BuildContext context) {
@@ -129,10 +130,12 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                 controller: codeController,
                 focusNode: codeFocusNode,
                 keyboardType: TextInputType.number,
-                maxLength: 6, // ✅ Limit to 6 digits
-                buildCounter: (context, {required currentLength, required isFocused, maxLength}) => null, // ✅ Hides "0/6"
+                maxLength: 6,
+                buildCounter: (context, {required currentLength, required isFocused, maxLength}) => null,
                 onChanged: (value) {
-                  controller.code.value = value;
+                  setState(() {
+                    verificationCode = value;
+                  });
                 },
                 decoration: const InputDecoration(
                   hintText: 'Enter 6 digit code',
@@ -145,35 +148,31 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
             ),
             const SizedBox(height: 20),
 
-            // Verify Code Button
-            Obx(() {
-              final isEnabled = controller.isCodeValid;
-
-              return Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: isEnabled ? AppColors.skyBlue : AppColors.skylite,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(10),
-                  onTap: isEnabled
-                      ? () {
-                    Get.to(() =>  HomePage());
-                  }
-                      : null,
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16),
-                    child: Center(
-                      child: Text(
-                        'Verify',
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
+            // Verify Button
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: isCodeValid ? AppColors.skyBlue : AppColors.skylite,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(10),
+                onTap: isCodeValid
+                    ? () {
+                  Get.to(() =>  HomePage());
+                }
+                    : null,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  child: Center(
+                    child: Text(
+                      'Verify',
+                      style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
                   ),
                 ),
-              );
-            }),
+              ),
+            ),
           ],
         ),
       ),

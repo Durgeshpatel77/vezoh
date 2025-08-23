@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vezoh/screens/user_sides_screens/home_screens/courier_screens/yourcourier_trip_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
-import 'package:vezoh/screens/user_sides_screens/home_screens/rides_screens/your_trip_screen.dart';
 
 class FindDriverForCourierScreen extends StatelessWidget {
   final String fromLocation;

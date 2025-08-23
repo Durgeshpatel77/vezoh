@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:vezoh/screens/driver_sides_screens/login_scrrens/signup_driver_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
 import 'get_started_screen.dart';
@@ -95,8 +94,7 @@ class _ChoozeServiceScreenState extends State<ChoozeServiceScreen> {
               title: 'Drive and earn',
               subtitle: 'Make money driving with your vehicle',
               onTap: () {
-                Get.to(() => const SignupDriverScreen());
-        
+
               },
             ),
           ],

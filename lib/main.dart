@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:vezoh/screens/user_sides_screens/login_screens/chooze_service_screen.dart';
+import 'package:vezoh/screens/slider_screens/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());  // ✅ No need to initialize Firebase now
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: ChoozeServiceScreen(),
+      home: SplashScreen(),
     );
   }
 }

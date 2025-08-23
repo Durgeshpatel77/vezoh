@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vezoh/controller/user_side_controllers/home_controller/home_page_controller.dart';
 
 class HomeController extends GetxController {
   final selectedIndex = 0.obs;
