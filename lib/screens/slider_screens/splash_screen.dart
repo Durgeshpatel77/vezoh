@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vezoh/screens/user_sides_screens/login_screens/get_started_screen.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vezoh/screens/user_sides_screens/home_screens/home_page.dart';
 import 'package:vezoh/screens/user_sides_screens/login_screens/user_detail_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
@@ -22,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     ),
     _IntroSlide(
       title: "Book Rides & Deliveries",
-      subtitle: "Travel anywhere or send packages\n with case",
+      subtitle: "Travel anywhere or send packages\nwith ease",
       icon: Icons.location_on,
     ),
     // Index 2 will be skipped
@@ -54,6 +56,24 @@ class _SplashScreenState extends State<SplashScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _checkLogin();
+  }
+
+  Future<void> _checkLogin() async {
+    final prefs = await SharedPreferences.getInstance();
+    bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+
+    if (isLoggedIn) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => HomePage()),
+      );
+    }
+  }
+
+  @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
@@ -65,9 +85,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return SingleChildScrollView(
       child: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(
-            minHeight: 800, // optional minimum height
-          ),
+          constraints: const BoxConstraints(minHeight: 800),
           child: IntrinsicHeight(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +110,6 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 16),
 
                 /// App Name
@@ -104,7 +121,6 @@ class _SplashScreenState extends State<SplashScreen> {
                     color: AppColors.white,
                   ),
                 ),
-
                 const SizedBox(height: 10),
 
                 /// Subtitle
@@ -116,7 +132,6 @@ class _SplashScreenState extends State<SplashScreen> {
                     color: AppColors.white,
                   ),
                 ),
-
                 const SizedBox(height: 40),
 
                 /// Show card only from index 1 (skip 0 and 2)
@@ -139,19 +154,16 @@ class _SplashScreenState extends State<SplashScreen> {
                         Text(
                           slide.title,
                           style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.white,
-                          ),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.white),
                         ),
                         const SizedBox(height: 8),
                         Text(
                           slide.subtitle,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                            fontSize: 12,
-                            color: AppColors.white,
-                          ),
+                              fontSize: 12, color: AppColors.white),
                         ),
                         const SizedBox(height: 20),
                       ],
@@ -188,7 +200,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void handlePageChange(int index) {
     if (index == 2) {
-      // Navigate to GetStartedScreen instead of showing index 2
+      // Navigate to UserDetailScreen instead of showing index 2
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => const UserDetailScreen()),

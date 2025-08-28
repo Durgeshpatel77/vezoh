@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vezoh/controller/user_side_controllers/login_controller/driver_detail_controller.dart';
+import 'package:vezoh/controller/user_side_controllers/login_controller/user_detail_controller.dart';
 import 'package:vezoh/screens/user_sides_screens/login_screens/signup_password_screen.dart';
 import 'package:vezoh/theme/app_theme.dart';
 
@@ -8,10 +8,10 @@ class UserDetailScreen extends StatefulWidget {
   const UserDetailScreen({super.key});
 
   @override
-  State<UserDetailScreen> createState() => _SignupDriverScreenState();
+  State<UserDetailScreen> createState() => _UserDetailScreenState();
 }
 
-class _SignupDriverScreenState extends State<UserDetailScreen> {
+class _UserDetailScreenState extends State<UserDetailScreen> {
   final _formKey = GlobalKey<FormState>();
   final controller = Get.put(UserDetailController());
 
@@ -36,7 +36,7 @@ class _SignupDriverScreenState extends State<UserDetailScreen> {
     );
   }
 
-  // Email validator
+  // Validators
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) return 'Email is required';
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}$');
@@ -44,14 +44,12 @@ class _SignupDriverScreenState extends State<UserDetailScreen> {
     return null;
   }
 
-  // Phone validator
   String? _validatePhone(String? value) {
     if (value == null || value.isEmpty) return 'Phone number is required';
     if (value.length != 10) return 'Enter a 10-digit number';
     return null;
   }
 
-  // Name validator
   String? _validateName(String? value) {
     if (value == null || value.trim().isEmpty) return 'Name is required';
     return null;
@@ -87,8 +85,11 @@ class _SignupDriverScreenState extends State<UserDetailScreen> {
                       Container(
                         height:60,
                         width: 60,
-                        decoration: BoxDecoration(color: AppColors.skyBlue,borderRadius: BorderRadius.circular(10)),
-                        child: Center(
+                        decoration: BoxDecoration(
+                          color: AppColors.skyBlue,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Center(
                           child: Text(
                             "V",
                             style: TextStyle(
@@ -99,6 +100,7 @@ class _SignupDriverScreenState extends State<UserDetailScreen> {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 6),
                       Text("vezoH", style: TextStyle(fontSize: 16, color: AppColors.skyBlue)),
                     ],
                   ),
@@ -109,7 +111,6 @@ class _SignupDriverScreenState extends State<UserDetailScreen> {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(height: 20),
-
                 Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
@@ -126,6 +127,7 @@ class _SignupDriverScreenState extends State<UserDetailScreen> {
                         controller: controller.nameController,
                         decoration: customInputDecoration('John Doe'),
                         validator: _validateName,
+                        onChanged: (value) => print("Name changed: $value"),
                       ),
                       const SizedBox(height: 16),
                       const Text('Email Address'),
@@ -135,6 +137,7 @@ class _SignupDriverScreenState extends State<UserDetailScreen> {
                         keyboardType: TextInputType.emailAddress,
                         decoration: customInputDecoration('johndoe@gmail.com'),
                         validator: _validateEmail,
+                        onChanged: (value) => print("Email changed: $value"),
                       ),
                       const SizedBox(height: 16),
                       const Text('Phone Number'),
@@ -144,20 +147,25 @@ class _SignupDriverScreenState extends State<UserDetailScreen> {
                         keyboardType: TextInputType.phone,
                         decoration: customInputDecoration('9865123445'),
                         validator: _validatePhone,
+                        onChanged: (value) => print("Phone changed: $value"),
                       ),
                     ],
                   ),
                 ),
-
                 const SizedBox(height: 30),
-
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        // All fields are valid
+                        print("Step 1 Passed Validation");
+                        print("Name: ${controller.nameController.text}");
+                        print("Email: ${controller.emailController.text}");
+                        print("Phone: ${controller.phoneController.text}");
+
                         Get.to(() => const SignupPasswordScreen());
+                      } else {
+                        print("Step 1 Validation Failed");
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -171,9 +179,7 @@ class _SignupDriverScreenState extends State<UserDetailScreen> {
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 20),
-
                 const Center(
                   child: Column(
                     children: [
